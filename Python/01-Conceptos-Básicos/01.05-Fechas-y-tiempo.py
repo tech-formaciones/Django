@@ -45,4 +45,15 @@ print(f"Edad: {dtr.days / 365}")
 
 edad = divmod(dtr.days, 365)
 print(edad)
-print(f"Tienes {edad[0]} años y {edad[1]} días")
+print(f"Tienes {edad[0]} años y {edad[1]} días \n")
+
+# TIME retorna el número de segundos desde 01-Ene-1973
+t1 = time.time()
+print(f"Segundos desde el 01-Ene-1970: {t1} \n")
+
+# Transformación en fecha. Retorna una Tupla.
+print(f"Fecha: {time.localtime(t1)}")
+print(f"Año de la Fecha: {time.localtime(t1).tm_year}")
+
+# Converción ha fecha y hora local
+print(f"Fecha y Hora Local: {time.asctime(time.localtime(t1))}")
