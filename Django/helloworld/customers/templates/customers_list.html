@@ -1,0 +1,48 @@
+{% extends '_base.html' %}
+
+{% block title %}Customers | List{% endblock %}
+
+{% block content %}
+    <h1>Listado de Clientes</h1>
+    <hr />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td><b>Identificador</b></td>
+                <td><b>Empresa</b></td>
+                <td><b>Contacto</b></td>
+                <td><b>Dirección</b></td>
+                <td> </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in customers%}
+            <tr>
+                <td>{{item.CustomerID}}</td>
+                <td>{{item.CompanyName}}</td>
+                <td>{{item.ContactName}}<br />{{item.Phone}}</td>
+                <td>
+                    {{item.Address}}
+                    <br />
+                    <small>
+                        {{item.PostalCode}} {{item.City}} ({{item.Country}})
+                    </small>
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-success" href="/customers/{{item.CustomerID}}">ver ficha</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br />
+    <br />
+{% endblock %}
+
+{% block javascript %} 
+    <script>
+        $(document).ready(function(e) {
+            alert('Demo !!!');
+        });
+    </script>
+{% endblock %}

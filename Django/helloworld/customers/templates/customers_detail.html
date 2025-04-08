@@ -1,0 +1,15 @@
+{% extends '_base.html' %}
+
+{% block title %}Customers | Ficha{% endblock %}
+
+{% block content %}
+    <h1>Ficha de {{customer.CompanyName}}</h1>
+    <hr />
+    {{ form.as_p}}
+    <br />
+    <br />
+{% endblock %}
+
+{% block javascript %} 
+
+{% endblock %}
