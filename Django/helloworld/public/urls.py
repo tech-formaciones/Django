@@ -6,7 +6,7 @@ from . import views
 
 urlpatterns = [
     path('', RedirectView.as_view(url='home/', permanent=False)),
-    path('home/', views.home),
+    path('home/', views.HomeView.as_view()),
     path('home1/', views.home1),
     path('home2/', views.home2),
 ]

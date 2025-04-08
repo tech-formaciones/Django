@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+
+{% block title %}Django App | Home {% endblock %}
+
+{% block content %}
+    <h1>Home Page</h1>
+    <hr />
+    {% include '_version.html' %}
+    <div class="{{ classname }}">
+        <p><b>Fecha: </b> {{ mifecha }}</p>
+    </div>
+{% endblock %}
