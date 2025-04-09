@@ -53,7 +53,8 @@ class CustomerDetailView(View):
         return render(request, self.template_name, context)
 
     def post(self, request, customer_id):
-        form = CustomersForm(request.POST)
+        customer = get_object_or_404(Customers.objects.using('northwind'), customerid = customer_id)
+        form = CustomersForm(request.POST, instance=customer)
 
         if(form.is_valid()):
             form.save()

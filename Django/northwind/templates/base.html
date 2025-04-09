@@ -37,7 +37,7 @@
     </header>
 
     <!-- Main -->
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             {% block content %}{% endblock %}
         </main>
@@ -55,7 +55,7 @@
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>    
     <script src="{% static '/lib/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.1/dist/sweetalert2.all.min.js"></script>    
-    <script src="{% static '/js/site.js?v=1' %}"></script>
+    <script src="{% static '/js/site.js' %}"></script>
     {% block javascript %}{% endblock %}
 </body>
 </html>

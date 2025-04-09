@@ -8,9 +8,201 @@
         <div class="col-10">
             <div class="text-start">
                 <br />
-                <h1>Ficha de {{form.companyname}}</h1>
+                <h1>Ficha de {{form.companyname.value}}</h1>
                 <hr />
-                {{ form.as_p}}
+                <form method="POST">
+                    {% csrf_token %}
+                
+                    <div class="row">
+                        <div class="col-1"> </div>
+                        <div class="col">
+                            <div class="card">
+                                {% if view == 'details' %}
+                                <div class="card-header text-bg-primary">{{ form.companyname.value }}</div>
+                                {% else %}
+                                <div class="card-header text-bg-primary">New Customer</div>
+                                {% endif %}
+                                
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col mb-3">
+                                            <div class="form-group">
+                                                <label for="id_customerid">Customer ID:</label>
+                                                <input type="text" name="customerid" id="id_customerid" value="{{ form.customerid.value | default_if_none:'' }}" class="form-control" placeholder="Escribe el Customer ID">
+                                                {% if form.customerid.errors %}
+                                                    <ul class="errorlist">
+                                                        {% for error in form.customerid.errors %}
+                                                            <li>{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">
+                                            <div class="form-group">
+                                                <label for="id_companyname">Company Name:</label>
+                                                <input type="text" name="companyname" id="id_companyname" value="{{ form.companyname.value | default_if_none:'' }}" class="form-control" placeholder="Escribe el nombre de la empresa">
+                                                {% if form.companyname.errors %}
+                                                    <ul class="errorlist">
+                                                        {% for error in form.companyname.errors %}
+                                                            <li>{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">    
+                                            <div class="form-group">
+                                                <label for="id_contactname">Contact Name:</label>
+                                                <input type="text" name="contactname" id="id_contactname" value="{{ form.contactname.value | default_if_none:'' }}" class="form-control" placeholder="Escribe el nombre del contacto">
+                                                {% if form.contactname.errors %}
+                                                    <ul class="errorlist">
+                                                        {% for error in form.contactname.errors %}
+                                                            <li>{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">    
+                                            <div class="form-group">
+                                                <label for="id_contacttitle">Contact Title:</label>
+                                                <input type="text" name="contacttitle" id="id_contacttitle" value="{{ form.contacttitle.value | default_if_none:'' }}" class="form-control" placeholder="Escribe el título del contacto">
+                                                {% if form.contacttitle.errors %}
+                                                    <ul class="errorlist">
+                                                        {% for error in form.contacttitle.errors %}
+                                                            <li>{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">    
+                                            <div class="form-group">
+                                                <label for="id_address">Address:</label>
+                                                <input type="text" name="address" id="id_address" value="{{ form.address.value | default_if_none:'' }}" class="form-control" placeholder="Escribe la dirección">
+                                                {% if form.address.errors %}
+                                                    <ul class="errorlist">
+                                                        {% for error in form.address.errors %}
+                                                            <li>{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">    
+                                            <div class="form-group">
+                                                <label for="id_city">City:</label>
+                                                <input type="text" name="city" id="id_city" value="{{ form.city.value | default_if_none:'' }}" class="form-control" placeholder="Escribe la ciudad">
+                                                {% if form.city.errors %}
+                                                    <ul class="errorlist">
+                                                        {% for error in form.city.errors %}
+                                                            <li>{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">    
+                                            <div class="form-group">
+                                                <label for="id_region">Region:</label>
+                                                <input type="text" name="region" id="id_region" value="{{ form.region.value | default_if_none:'' }}" class="form-control" placeholder="Escribe la región">
+                                                {% if form.region.errors %}
+                                                    <ul class="errorlist">
+                                                        {% for error in form.region.errors %}
+                                                            <li>{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">    
+                                            <div class="form-group">
+                                                <label for="id_postalcode">Postal Code:</label>
+                                                <input type="text" name="postalcode" id="id_postalcode" value="{{ form.postalcode.value | default_if_none:'' }}" class="form-control" placeholder="Escribe el código postal">
+                                                {% if form.postalcode.errors %}
+                                                    <ul class="errorlist">
+                                                        {% for error in form.postalcode.errors %}
+                                                            <li>{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">    
+                                            <div class="form-group">
+                                                <label for="id_country">Country:</label>
+                                                <input type="text" name="country" id="id_country" value="{{ form.country.value | default_if_none:'' }}" class="form-control" placeholder="Escribe el país">
+                                                {% if form.country.errors %}
+                                                    <ul class="errorlist">
+                                                        {% for error in form.country.errors %}
+                                                            <li>{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">    
+                                            <div class="form-group">
+                                                <label for="id_phone">Phone:</label>
+                                                <input type="text" name="phone" id="id_phone" value="{{ form.phone.value | default_if_none:'' }}" class="form-control" placeholder="Escribe el teléfono">
+                                                {% if form.phone.errors %}
+                                                    <ul class="errorlist">
+                                                        {% for error in form.phone.errors %}
+                                                            <li>{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">    
+                                            <div class="form-group">
+                                                <label for="id_fax">Fax:</label>
+                                                <input type="text" name="fax" id="id_fax" value="{{ form.fax.value | default_if_none:'' }}" class="form-control" placeholder="Escribe el fax">
+                                                {% if form.fax.errors %}
+                                                    <ul class="errorlist">
+                                                        {% for error in form.fax.errors %}
+                                                            <li>{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />    
+                            <div class="row mb-3">
+                                <div class="col"> </div>
+                                <div class="col text-end">   
+                                    <a href="{% url 'customer_list' %}" class="btn btn-secondary">Ir al listado</a>&nbsp;
+                                    <button type="submit" class="btn btn-primary">Guardar</button>                    
+                                </div>        
+                            </div>
+                        </div>
+                        <div class="col-1"> </div>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="col-1"> </div>
