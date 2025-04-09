@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Customers | Delete{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-1"> </div>
+        <div class="col-10">
+            <div class="text-start">
+                <br />
+                <h1>EliminarClientes</h1>
+                <hr />
+                <h5><b>Cliente:</b> {{customer.companyname}}</h5>
+                <br />
+                <h5>¿Estás seguro que deseas eliminar este cliente?</h5>
+                <br />
+                <form method="post">
+                    {% csrf_token %}
+                    <a class="btn btn-secondary" href="{% url 'customer_list' %}">No, cancelar</a>
+                    <button type="submit" class="btn btn-warning">Sí, eliminar</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-1"> </div>
+    </div>
+    <br />
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $('document').ready(function() {
+        DemoApp.Modules.Customers.Init();
+    });
+</script>
+{% endblock %} 
