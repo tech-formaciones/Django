@@ -35,6 +35,7 @@ class CustomerListView2(ListView):
     def get_queryset(self):
         return Customers.objects.using('northwind').all()
     
+# Vista para mostrar y actulizar un Cliente, opción 1
 class CustomerDetailView(View):
     model = Customers
     template_name = 'customer_details.html'
@@ -62,3 +63,26 @@ class CustomerDetailView(View):
             return redirect(reverse('customer_list'))
         else:
             return render(request, self.template_name, {'form': form, 'view_name': 'details'}) 
+
+# Vista para mostrar y actulizar un Cliente, opción 2
+class CustomerDetailView2(UpdateView):
+    model = Customers
+    form_class = CustomersForm
+    template_name = 'customer_details.html'
+    context_object_name = 'customers'
+
+    def get_object(self, queryset = None):
+        customer_id = self.kwargs.get('customer_id')
+        return get_object_or_404(Customers.objects.using('northwind'), customerid = customer_id)
+    
+    def form_valid(self, form):
+        form.save()
+        return redirect(reverse('customer_list'))
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['view_name'] = 'details'
+
+        return context
+
+class CustomerCreate
