@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Customers | List{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-1"> </div>
+        <div class="col-10">
+            <div class="text-start">
+                <br />
+                <h1>Listado de Clientes</h1>
+                <hr />
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td><b>Identificador</b></td>
+                            <td><b>Empresa</b></td>
+                            <td><b>Contacto</b></td>
+                            <td><b>Dirección</b></td>
+                            <td> </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in customers %}
+                        <tr>
+                            <td>{{item.customerid}}</td>
+                            <td>{{item.companyname}}</td>
+                            <td>
+                                {{item.contactname}}
+                                <small>
+                                    ({{item.contacttitle}})
+                                    <br />
+                                    {{item.phone}}
+                                <small>
+                            </td>
+                            <td>
+                                {{item.address}}
+                                <br />
+                                <small>
+                                    {{item.postalcode}} {{item.city}} ({{item.country}})
+                                <small>                                
+                            </td>
+                            <td>
+                                <a href="/customers/{{item.customerid}}/" class="btn btn-success btn-sm">ver ficha</a>&nbsp;
+                                <a href="/customers/{{item.customerid}}/delete" class="btn btn-danger btn-sm">eliminar</a>&nbsp;
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-1"> </div>
+    </div>
+    <br />
+    <div class="row"> 
+        <div class="col-1"> </div>       
+        <div class="col-5 text-start"> 
+            <a href="/customers/create/" class="btn btn-primary btn-sm">nuevo cliente</a>
+        </div>
+        <div class="col-6"> </div>
+    </div>    
+    <br />
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $('document').ready(function() {
+        DemoApp.Modules.Customers.Init();
+    });
+</script>
+{% endblock %} 

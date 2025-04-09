@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Customers | List{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-1"> </div>
+        <div class="col-10">
+            <div class="text-start">
+                <br />
+                <h1>Ficha de {{form.companyname}}</h1>
+                <hr />
+                {{ form.as_p}}
+            </div>
+        </div>
+        <div class="col-1"> </div>
+    </div>
+    <br /> 
+    <br />
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $('document').ready(function() {
+    });
+</script>
+{% endblock %} 
