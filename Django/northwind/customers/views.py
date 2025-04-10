@@ -189,7 +189,7 @@ class CustomerListViewNativeClient(View):
 
         return render(request, self.template_name, {self.context_object_name: customers})
 
-# Vista para un listado de Clientes, cliente HTTP
+# Vista para un listado de Clientes, cliente HTTP (API construida con Flask)
 class CustomerListViewHTTPClient(View):
     template_name = 'customer_list.html'
     context_object_name = 'customers'
@@ -199,6 +199,28 @@ class CustomerListViewHTTPClient(View):
     def get(self, request):
         try:
             response = requests.get(self.api_url, headers={'X-API-KEY': '123456secret'})
+            response.raise_for_status()
+            customers = response.json()
+        except:
+            self.customers = []
+        finally:
+            return render(request, self.template_name, {self.context_object_name: customers})
+        
+# Vista para un listado de Clientes, cliente HTTP (API construida con Django Rest)
+# En la carpeta \Django-Rest\northwinrest debes ejecutar el comando:
+#   python manage.py runserver 8080
+# 
+# Puede probar el api navegando a: http://127.0.0.1:8080/api/customers/ ó http://127.0.0.1:8080/api/customers/ANATR/
+#
+class CustomerListViewHTTPClient2(View):
+    template_name = 'customer_list.html'
+    context_object_name = 'customers'
+    api_url = 'http://127.0.0.1:8080/api/customers/'
+    customers = []
+
+    def get(self, request):
+        try:
+            response = requests.get(self.api_url)
             response.raise_for_status()
             customers = response.json()
         except:

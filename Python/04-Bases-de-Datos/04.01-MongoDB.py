@@ -19,7 +19,7 @@ class Customer:
 #########################################################
 # Conectar con el servidor MongoDB
 #########################################################
-cliente = MongoClient("mongodb://host-db.eastus.cloudapp.azure.com:27017/")
+cliente = MongoClient("mongodb://localhost:27017/")
 
 # adminDB = cliente.admin
 # resultado = adminDB.command("serverStatus")
